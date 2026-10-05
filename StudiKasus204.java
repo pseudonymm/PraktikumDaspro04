@@ -25,7 +25,15 @@ public class StudiKasus204 {
             jenisKegiatan.equalsIgnoreCase("Mandiri") ||
             jenisKegiatan.equalsIgnoreCase("PKM") ||
             jenisKegiatan.equalsIgnoreCase("Lainnya")
-        ) { 
+        ) {
+            if (jenisKegiatan.equalsIgnoreCase("PKM")) {
+                System.out.println("Masukkan status pendanaan PKM (0 = tidak lolos, 1 = lolos): ");
+                statusPendanaan = input.nextInt();
+                if (statusPendanaan != 1) {
+                    alasan = "Status pendanaan PKM tidak valid";
+                }
+            }
+            
             System.out.println("Masukkan peringkat juara (1-3): ");
             peringkatJuara = input.nextInt();
             if (peringkatJuara < 1 || peringkatJuara > 3) {
@@ -39,6 +47,19 @@ public class StudiKasus204 {
             }
         } else {
             alasan = "Jenis kegiatan tidak valid";
+        }
+
+        System.out.println("Mahasiswa: " + namaMahasiswa);
+        System.out.println("Jenis Kegiatan: " + jenisKegiatan);
+        System.out.println("Peringkat Juara: " + peringkatJuara);
+        System.out.println("Jumlah Dokumen: " + jumlahDokumen);
+        System.out.println("Status Pendanaan: " + statusPendanaan);
+        System.out.print("Status: ");
+        if (!alasan.isEmpty()) {
+            System.out.print(alasan);
+            System.out.print(". Dana penghargaan tidak diberikan.\n");
+        } else {
+            System.out.println("Dana penghargaan diberikan.");
         }
     }
 }
